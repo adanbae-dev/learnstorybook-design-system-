@@ -1,0 +1,20 @@
+# 액션 이름
+name: 'Chromatic'
+# 트리거 액션
+on: push
+
+# 액션이 할일
+jobs:
+  test:
+    # os system
+    runs-on: ubuntu-latest
+    # 액션 스탭
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn
+      # chromatic 워크플로우 액션 스탭
+      - uses: chromaui/action@v1
+        # chromatic github 액션 필요 옵션
+        with: 
+          projectToken: ${{ screets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
